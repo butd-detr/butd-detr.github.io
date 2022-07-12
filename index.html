@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Beauty-DETR grounds language">
-  <meta name="keywords" content="Beauty-DETR, language grounding">
+        content="BUTD-DETR grounds language">
+  <meta name="keywords" content="BUTD-DETR, 3D language grounding, 2D Language grounding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Looking Outside the Box to Ground Language in 3D Scenes</title>
+  <title>Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -34,8 +34,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Looking Outside the Box to Ground Language in 3D Scenes</h1>
-          <div class="is-size-5 publication-authors">
+          <h1 class="title is-1 publication-title">Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds</h1>
+          <div class="is-size-4 publication-authors">
             <span class="author-block">
               <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup><sup>1</sup>,</span>
             <span class="author-block">
@@ -49,58 +49,23 @@
             
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Carnegie Mellon University,</span>
-            <span class="author-block"><sup>2</sup>Facebook AI Research</span>
+            <span class="author-block"><sup>2</sup>Meta AI</span>
+          </div>
+          
+          <div class="is-size-5 contribution">
+            <span class="appear">To appear in the proceedings of <a href="https://eccv2022.ecva.net/">ECCV 2022</a></span>
           </div>
 
           <div class="is-size-5 contribution">
-            <span class="contribution"><sup>*</sup>Denotes Equal Contribution</span>
-          </div>
+            <span class="contribution"><sup>*</sup>Equal Contribution (God may not play dice, we do)</span>
+          </div><br> 
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2112.08879"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!--  <span class="link-block">
-                <a href="https://arxiv.org/abs/2112.08879"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a> -->
-              </span>
-              <!-- Video Link.
-              <span class="link-block">
-                <a href="https://youtu.be/SM4seQgf9n4"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>  -->
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/nickgkan/beauty_detr"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-            </div>
-
-          </div>
+          <table align=center width=700px>
+            <tr>
+              <td align=center width=100px><center><span style="font-size:28px"><a href="https://arxiv.org/abs/2112.08879">[Paper]</a></span></center></td>
+              <td align=center width=100px><center><span style="font-size:28px"><a href="https://github.com/nickgkan/beauty_detr">[Code]</a></span></center></td>
+          <tr/>
+        </table>
         </div>
       </div>
     </div>
@@ -195,10 +160,10 @@
             such as the chair, the leg of a chair, or the tip of the front leg of a chair, which may be missed by the detector. Recently,
             MDETR introduced a language grounding model for 2D images that do not have such a box proposal bottleneck; instead of selecting
             objects from a proposal pool, it instead decodes the referenced object boxes directly from image and language features and achieves
-            big leaps in performance. We propose a language grounding model for 3D scenes built on MDETR, which we call BEAUTY-DETR, from bottom-up
-            and top-down DETR. BEAUTY-DETR attends on an additional object proposal pool computed bottom-up from a pre-trained detector. Yet it decodes
+            big leaps in performance. We propose a language grounding model for 3D scenes built on MDETR, which we call BUTD-DETR, from bottom-up
+            and top-down DETR. BUTD-DETR attends on an additional object proposal pool computed bottom-up from a pre-trained detector. Yet it decodes
             referenced objects without selecting them from the pool. In this way, it uses powerful object detectors to help ground language without being
-            restricted by their misses. Second, BEAUTY-DETR augments supervision from language grounding annotations by configuring object detection annotations
+            restricted by their misses. Second, BUTD-DETR augments supervision from language grounding annotations by configuring object detection annotations
             as language prompts to be grounded in images. The proposed model sets a new state-of-the-art across popular 3D language grounding benchmarks with
             significant performance gains over previous 3D approaches (12.6% on SR3D, 11.6% on NR3D and 6.3% on ScanRefer). It outperforms a straightforward
             MDETR for the 3D point clouds method we implemented by 6.7% on SR3D, 11.8% on NR3D and 5% on the ScanRefer benchmark. When applied to language
@@ -229,7 +194,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3"> Method: BEAUTY-DETR </h2>
+        <h2 class="title is-3"> Method: BUTD-DETR </h2>
         
         <div class="col-md-8 col-md-offset-2">
                 <figure>
@@ -303,17 +268,42 @@
   </div>
 </section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{jain2021looking,
-      title={Looking Outside the Box to Ground Language in 3D Scenes},
-      author={Jain, Ayush and Gkanatsios, Nikolaos and Mediratta, Ishita and Fragkiadaki, Katerina},
-      journal={arXiv preprint arXiv:2112.08879},
-      year={2021}
-    }</code></pre>
+
+
+<section class="section" id="BibTeX1">
+<div class="container is-max-desktop content">
+  <h2 class="title" align="center">Paper and Bibtex</h2>
+
+    <span class="gg">
+      <a href="https://arxiv.org/abs/2112.08879"><img style="width:250px" src="static/images/thumbnail.png" align="left"/> </a>
+      <pre><code>
+        @misc{https://doi.org/10.48550/arxiv.2112.08879,
+          doi = {10.48550/ARXIV.2112.08879},
+          url = {https://arxiv.org/abs/2112.08879},
+          author = {Jain, Ayush and Gkanatsios, Nikolaos and Mediratta, Ishita and Fragkiadaki, Katerina},
+          keywords = {Computer Vision and Pattern Recognition (cs.CV), Computation and Language (cs.CL)},
+          title = {Looking Outside the Box to Ground Language in 3D Scenes},
+          publisher = {arXiv},
+          year = {2021},
+          copyright = {Creative Commons Attribution 4.0 International}
+        }
+      </code></pre>
+   
+      <!-- <a href="htps://arxiv.org/abs/2112.08879">[Paper]</a> -->
+    </span>
+
+    <!-- <span class="author-block">
+      <a href="https://arxiv.org/abs/2112.08879"><img style="width:400px" src="static/images/thumbnail.png"/></a> 
+      <a href="https://arxiv.org/abs/2112.08879">[Paper]</a>
+    </span> -->
+
+  <!-- <p style="text-align:left;"><b><span style="font-size:20pt">Citation</span></b><br/><span style="font-size:6px;">&nbsp;<br/></span> <span style="font-size:15pt">Jain, A., Gkanatsios, N., Mediratta, I. and Fragkiadaki, K. (2021). <br>
+      Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds
+      <br> <em> ArXiv, abs/2112.08879.</em> </span></p> -->
+  <!-- <p style="margin-top:20px;"></p> -->     
   </div>
 </section>
+<br><hr>
 
 
 <footer class="footer">

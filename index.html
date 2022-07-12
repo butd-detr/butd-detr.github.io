@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Beauty-DETR grounds language">
+  <meta name="keywords" content="Beauty-DETR, language grounding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Looking Outside the Box to Ground Language in 3D Scenes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+ <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Looking Outside the Box to Ground Language in 3D Scenes</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://nickgkan.github.io/">Nikolaos Gkanatsios</a><sup>*</sup><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://ishita.io/">Ishita Mediratta</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a><sup>1</sup>,
+            </span>
+            
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University,</span>
+            <span class="author-block"><sup>2</sup>Facebook AI Research</span>
+          </div>
+
+          <div class="is-size-5 contribution">
+            <span class="contribution"><sup>*</sup>Denotes Equal Contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2112.08879"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--  <span class="link-block">
+                <a href="https://arxiv.org/abs/2112.08879"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a> -->
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://youtu.be/SM4seQgf9n4"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>  -->
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/nickgkan/beauty_detr"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop height="100%">
+        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Most language grounding models learn to select the referred object from a pool of object proposals provided by a pre-trained detector.
+            This object proposal bottleneck is limiting because an utterance may refer to visual entities at various levels of granularity,
+            such as the chair, the leg of a chair, or the tip of the front leg of a chair, which may be missed by the detector. Recently,
+            MDETR introduced a language grounding model for 2D images that do not have such a box proposal bottleneck; instead of selecting
+            objects from a proposal pool, it instead decodes the referenced object boxes directly from image and language features and achieves
+            big leaps in performance. We propose a language grounding model for 3D scenes built on MDETR, which we call BEAUTY-DETR, from bottom-up
+            and top-down DETR. BEAUTY-DETR attends on an additional object proposal pool computed bottom-up from a pre-trained detector. Yet it decodes
+            referenced objects without selecting them from the pool. In this way, it uses powerful object detectors to help ground language without being
+            restricted by their misses. Second, BEAUTY-DETR augments supervision from language grounding annotations by configuring object detection annotations
+            as language prompts to be grounded in images. The proposed model sets a new state-of-the-art across popular 3D language grounding benchmarks with
+            significant performance gains over previous 3D approaches (12.6% on SR3D, 11.6% on NR3D and 6.3% on ScanRefer). It outperforms a straightforward
+            MDETR for the 3D point clouds method we implemented by 6.7% on SR3D, 11.8% on NR3D and 5% on the ScanRefer benchmark. When applied to language
+            grounding in 2D images, it performs on par with MDETR. We ablate each of the design choices of the model and quantify their contribution to performance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video.
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/SM4seQgf9n4?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    / Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Method: BEAUTY-DETR </h2>
+        
+        <div class="col-md-8 col-md-offset-2">
+                <figure>
+                    <img src="./static/images/teaser.png" style="padding-bottom:10px" class="img-responsive" alt="overview">
+                    <!-- <figcaption class="figure-caption text-center" style="font-size: 14px;">
+                        <b>Fig. 5.</b> The ReferIt3DNet neural listener.
+                    </figcaption> -->
+                </figure>
+    </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            Given a 3D scene and a language referential utterance, the model localizes all object instances mentioned in the
+	    utterance. A pre-trained object detector extracts object box proposals. The 3D point cloud, the language utterance and the labelled box proposals are encoded
+	   into corresponding sequences of point, word and box tokens using visual, language and box encoders, respectively. The three streams cross-attend and finally
+	   decode boxes and corresponding spans in the language utterance that the decoded box refers to.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Qualitative Results: 3D </h2>
+        
+        <div class="col-md-8 col-md-offset-2">
+                <figure>
+                    <img src="./static/images/qual.png" style="padding-bottom:10px" class="img-responsive" alt="overview">
+                    <figcaption class="figure-caption text-center" style="font-size: 24px;">
+                    <span style="color: #0000a0">Blue boxes</span>
+ refer to our predictions,
+  <span style="color: #00ff00">green boxes</span> 
+                           refer to ground truths.
+                    </figcaption>
+                </figure>
+    </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Qualitative Results: 2D </h2>
+        
+        <div class="col-md-8 col-md-offset-2">
+                <figure>
+                    <img src="./static/images/qual_2d.png" style="padding-bottom:10px" class="img-responsive" alt="overview">
+                    <figcaption class="figure-caption text-center" style="font-size: 24px;">
+                    <span style="color: #ff0000">Red boxes</span>
+ refer to our predictions,
+  <span style="color: #00ff00">green boxes</span> 
+                           refer to ground truths.
+                    </figcaption>
+                </figure>
+    </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{jain2021looking,
+      title={Looking Outside the Box to Ground Language in 3D Scenes},
+      author={Jain, Ayush and Gkanatsios, Nikolaos and Mediratta, Ishita and Fragkiadaki, Katerina},
+      journal={arXiv preprint arXiv:2112.08879},
+      year={2021}
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/abs/2112.08879">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/nickgkan/beauty_detr" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Source code of this website is borrowed from  <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies template</a>.
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

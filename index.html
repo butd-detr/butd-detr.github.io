@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Bottom Up and Top Down Detection Transformers for Language Grounding in Images and Point Clouds">
+        content="Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds">
   <meta name="keywords" content="BUTD-DETR, 3D language grounding, 2D Language grounding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <article class="post-content">
-    <meta name="twitter:title" content="Bottom Up and Top Down Detection Transformers for Language Grounding in Images and Point Clouds"/>
+    <meta name="twitter:title" content="Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds"/>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://butd-detr.github.io/static/images/teaser.png" />
   <article class="post-content">
@@ -41,7 +41,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Bottom Up and Top Down Detection Transformers for Language Grounding in Images and Point Clouds</h1>
+          <h1 class="title is-1 publication-title">Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
               <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup><sup>1</sup>,</span>
@@ -70,7 +70,7 @@
           <table align=center width=700px>
             <tr>
               <td align=center width=100px><center><span style="font-size:28px"><a href="https://arxiv.org/abs/2112.08879">[Paper]</a></span></center></td>
-              <td align=center width=100px><center><span style="font-size:28px"><a href="https://github.com/nickgkan/beauty_detr">[Code]</a></span></center></td>
+              <td align=center width=100px><center><span style="font-size:28px"><a href="https://github.com/nickgkan/butd_detr">[Code]</a></span></center></td>
           <tr/>
         </table>
         </div>
@@ -79,80 +79,6 @@
   </div>
 </section>
 
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop height="100%">
-        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop height="100%">
-            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- -->
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -162,19 +88,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Most language grounding models learn to select the referred object from a pool of object proposals provided by a pre-trained detector.
-            This object proposal bottleneck is limiting because an utterance may refer to visual entities at various levels of granularity,
-            such as the chair, the leg of a chair, or the tip of the front leg of a chair, which may be missed by the detector. Recently,
-            MDETR introduced a language grounding model for 2D images that do not have such a box proposal bottleneck; instead of selecting
-            objects from a proposal pool, it instead decodes the referenced object boxes directly from image and language features and achieves
-            big leaps in performance. We propose a language grounding model for 3D scenes built on MDETR, which we call BUTD-DETR, from bottom-up
-            and top-down DETR. BUTD-DETR attends on an additional object proposal pool computed bottom-up from a pre-trained detector. Yet it decodes
-            referenced objects without selecting them from the pool. In this way, it uses powerful object detectors to help ground language without being
-            restricted by their misses. Second, BUTD-DETR augments supervision from language grounding annotations by configuring object detection annotations
-            as language prompts to be grounded in images. The proposed model sets a new state-of-the-art across popular 3D language grounding benchmarks with
-            significant performance gains over previous 3D approaches (12.6% on SR3D, 11.6% on NR3D and 6.3% on ScanRefer). It outperforms a straightforward
-            MDETR for the 3D point clouds method we implemented by 6.7% on SR3D, 11.8% on NR3D and 5% on the ScanRefer benchmark. When applied to language
-            grounding in 2D images, it performs on par with MDETR. We ablate each of the design choices of the model and quantify their contribution to performance.
+            Most models tasked to ground referential utterances in 2D and 3D scenes learn to select the referred object from a pool of object proposals provided by a pre-trained detector. This is limiting because an utterance may refer to visual entities at various levels of granularity, such as the chair, the leg of the chair, or the tip of the front leg of the chair, which may be missed by the detector. We propose a language grounding model that attends on the referential utterance and on the object proposal pool computed from a pre-trained detector to decode referenced objects with a detection head, without selecting them from the pool. In this way, it is helped by powerful pre-trained object detectors without being restricted by their misses. We call our model Bottom Up Top Down DEtection TRansformers (BUTD-DETR) because it uses both language guidance (top down) and objectness guidance (bottom-up) to ground referential utterances in images and point clouds. Moreover, BUTD-DETR casts object detection as referential grounding and uses object labels as language prompts to be grounded in the visual scene, augmenting supervision for the referential grounding task in this way. The proposed model sets a new state-of-the-art across popular 3D language grounding benchmarks with significant performance gains over previous 3D approaches (12.6% on SR3D, 11.6% on NR3D and 6.3% on ScanRefer). When applied in 2D images, it performs on par with the previous state of the art. We ablate the design choices of our model and quantify their contribution to performance.
           </p>
         </div>
       </div>
@@ -323,8 +237,8 @@
         doi = {10.48550/ARXIV.2112.08879},
         url = {https://arxiv.org/abs/2112.08879},
         author = {Jain, Ayush and Gkanatsios, Nikolaos and Mediratta, Ishita and Fragkiadaki, Katerina},
-        keywords = {Computer Vision and Pattern Recognition (cs.CV), Computation and Language (cs.CL)},
-        title = {Looking Outside the Box to Ground Language in 3D Scenes},
+        keywords = {Computer Vision and Pattern Recognition (cs.CV), Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},
+        title = {Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds},
         publisher = {arXiv},
         year = {2021},
         copyright = {Creative Commons Attribution 4.0 International}
@@ -352,7 +266,7 @@
          href="https://arxiv.org/abs/2112.08879">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/nickgkan/beauty_detr" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/nickgkan/butd_detr" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
